@@ -18,7 +18,7 @@ class SingleItem extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 1.8,
               child: Text(
-                'LedgerItem Name',
+                'Ledger Item Name',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)

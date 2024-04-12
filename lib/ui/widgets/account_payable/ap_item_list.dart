@@ -18,7 +18,7 @@ class APSingleItem extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 1.8,
               child: Text(
-                'ledgerItem name',
+                'Ledger Item name',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
@@ -33,7 +33,7 @@ class APSingleItem extends StatelessWidget {
             SizedBox(
               width: 80,
               child: Text(
-                'ledgerItem closingBalance',
+                'Closing Balance',
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
