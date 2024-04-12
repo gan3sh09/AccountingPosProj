@@ -4,6 +4,7 @@ import 'package:accounting_pos_project/ui/views/account_payable_screen.dart';
 import 'package:accounting_pos_project/ui/views/account_receivable_screen.dart';
 import 'package:accounting_pos_project/ui/views/home.dart';
 import 'package:accounting_pos_project/ui/views/ledger_screen.dart';
+import 'package:accounting_pos_project/ui/views/stock_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -86,7 +87,7 @@ Drawer tassistDrawer(BuildContext context) {
       const DrawerItem(
         icon: FontAwesomeIcons.warehouse,
         title: 'Stock',
-        onTap: HomeDashboardScreen(),
+        onTap: StockScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
