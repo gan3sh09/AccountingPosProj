@@ -15,9 +15,9 @@ class _APLedgerItemListState extends State<APLedgerItemList> {
 
   @override
   Widget build(BuildContext context) {
-    String ledgerGuid;
-    String partyname;
-    return Container(
+    /* String ledgerGuid;
+    String partyname; */
+    return SizedBox(
       height: MediaQuery.of(context).size.height / 1.1,
       child: Column(
         children: <Widget>[
@@ -35,19 +35,19 @@ class _APLedgerItemListState extends State<APLedgerItemList> {
             padding: spacer.bottom.xs,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 height: 50.0,
                 child: TextField(
                   onChanged: (value) {
                     // filterSearchResults(value.toLowerCase());
                   },
                   controller: editingController,
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   enableSuggestions: true,
                   decoration: InputDecoration(
                     labelText: "Search",
-                    labelStyle: Theme.of(context).textTheme.bodyText2,
-                    counterStyle: Theme.of(context).textTheme.bodyText2,
+                    labelStyle: Theme.of(context).textTheme.bodyMedium,
+                    counterStyle: Theme.of(context).textTheme.bodyMedium,
                     prefixIcon: const Icon(Icons.search),
                     border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(
@@ -64,16 +64,16 @@ class _APLedgerItemListState extends State<APLedgerItemList> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                       width: MediaQuery.of(context).size.width / 1.9,
                       child: const Text(
                         'Party Name',
                         style: TextStyle(
                             color: tassistPrimary, fontWeight: FontWeight.bold),
                       )),
-                  Container(
+                  const SizedBox(
                       width: 90,
-                      child: const Text(
+                      child: Text(
                         'Payables',
                         style: TextStyle(
                             color: tassistBlack, fontWeight: FontWeight.bold),
@@ -86,7 +86,7 @@ class _APLedgerItemListState extends State<APLedgerItemList> {
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: 15,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => {

@@ -15,7 +15,7 @@ class SingleItem extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width / 1.8,
               child: Text(
                 'LedgerItem Name',
@@ -30,7 +30,7 @@ class SingleItem extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Container(
+            SizedBox(
               width: 80,
               child: Text(
                 'Closing Balance',

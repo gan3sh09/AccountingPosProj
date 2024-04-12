@@ -15,7 +15,7 @@ class APSingleItem extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width / 1.8,
               child: Text(
                 'ledgerItem name',
@@ -30,7 +30,7 @@ class APSingleItem extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Container(
+            SizedBox(
               width: 80,
               child: Text(
                 'ledgerItem closingBalance',

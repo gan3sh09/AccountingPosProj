@@ -97,7 +97,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                     children: <Widget>[
                       ActionButton(
                           nepaliTitle: 'पार्टी',
-                          icon: Icon(FontAwesomeIcons.listAlt),
+                          icon: Icon(FontAwesomeIcons.rectangleList),
                           title: 'Parties'),
                       /* ActionButton(Icon(FontAwesomeIcons.listAlt), LedgerScreen(),
                           'Parties', 'पार्टी'), */
@@ -227,7 +227,7 @@ class _DashboardCardState extends State<DashboardCard> {
         children: <Widget>[
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width / 2.2,
               height: 70,
               child: InkWell(
@@ -267,7 +267,7 @@ class _DashboardCardState extends State<DashboardCard> {
           ),
           Card(
               elevation: 5,
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.2,
                 height: 70,
                 child: InkWell(
@@ -327,7 +327,7 @@ class _DashboardCard2State extends State<DashboardCard2> {
         children: <Widget>[
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width / 2.2,
               height: 70,
               child: InkWell(
@@ -367,7 +367,7 @@ class _DashboardCard2State extends State<DashboardCard2> {
           ),
           Card(
               elevation: 5,
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.2,
                 height: 70,
                 child: InkWell(
@@ -427,7 +427,7 @@ class _DashboardCard3State extends State<DashboardCard3> {
         children: <Widget>[
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width / 2.2,
               height: 70,
               child: InkWell(
@@ -466,7 +466,7 @@ class _DashboardCard3State extends State<DashboardCard3> {
           ),
           Card(
               elevation: 5,
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.2,
                 height: 70,
                 child: InkWell(

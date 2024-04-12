@@ -16,9 +16,9 @@ class _ARLedgerItemListState extends State<ARLedgerItemList> {
 
   @override
   Widget build(BuildContext context) {
-    String partyname;
-    String ledgerGuid;
-    return Container(
+    // String partyname;
+    // String ledgerGuid;
+    return SizedBox(
       height: MediaQuery.of(context).size.height / 1.1,
       child: Column(
         children: <Widget>[
@@ -36,7 +36,7 @@ class _ARLedgerItemListState extends State<ARLedgerItemList> {
             padding: spacer.bottom.xs,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 height: 50.0,
                 child: TextField(
                   onChanged: (value) {
@@ -65,16 +65,16 @@ class _ARLedgerItemListState extends State<ARLedgerItemList> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: const Text(
                         'Party Name    ',
                         style: TextStyle(
                             color: tassistPrimary, fontWeight: FontWeight.bold),
                       )),
-                  Container(
+                  const SizedBox(
                       width: 120,
-                      child: const Text(
+                      child: Text(
                         'Receivables',
                         style: TextStyle(
                             color: tassistBlack, fontWeight: FontWeight.bold),
@@ -87,7 +87,7 @@ class _ARLedgerItemListState extends State<ARLedgerItemList> {
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: 20,
               itemBuilder: (context, index) {
                 return GestureDetector(
                     onTap: () => {
