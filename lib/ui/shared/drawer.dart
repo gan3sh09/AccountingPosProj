@@ -1,5 +1,8 @@
 import 'package:accounting_pos_project/theme/colors.dart';
 import 'package:accounting_pos_project/theme/dimensions.dart';
+import 'package:accounting_pos_project/ui/views/account_payable_screen.dart';
+import 'package:accounting_pos_project/ui/views/account_receivable_screen.dart';
+import 'package:accounting_pos_project/ui/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -58,43 +61,43 @@ Drawer tassistDrawer(BuildContext context) {
       const DrawerItem(
         icon: Icons.dashboard,
         title: 'Home',
-        // ontap: HomeDashboardScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: FontAwesomeIcons.rectangleList,
         title: 'Ledgers / Parties',
-        // ontap: LedgerScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: Icons.call_received,
         title: 'Accounts Receivables',
-        // ontap: AccountsReceivableScreen(),
+        onTap: AccountsReceivableScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: Icons.call_made,
         title: 'Accounts Payables',
-        // ontap: AccountsPayableScreen(),
+        onTap: AccountsPayableScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: FontAwesomeIcons.warehouse,
         title: 'Stock',
-        // ontap: StockScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: FontAwesomeIcons.fileInvoice,
         title: 'Vouchers',
-        // ontap: VouchersHome(),
+        onTap: HomeDashboardScreen(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
         icon: Icons.receipt,
         title: 'Make New Invoice',
-        // ontap: LedgerInputScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistPrimary,
       ),
       Padding(
@@ -104,13 +107,13 @@ Drawer tassistDrawer(BuildContext context) {
       const DrawerItem(
         icon: Icons.lock,
         title: 'Bahi Khata',
-        // ontap: KhataScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistMainText,
       ),
       const DrawerItem(
         icon: Icons.settings,
         title: 'Settings',
-        // ontap: SettingsScreen(),
+        onTap: HomeDashboardScreen(),
         color: tassistMainText,
       ),
       const SizedBox(
@@ -154,19 +157,20 @@ Drawer tassistDrawer(BuildContext context) {
 }
 
 class DrawerItem extends StatefulWidget {
-  final IconData icon;
-  final String title;
-  final Widget? ontap;
-  final Color color;
-
   const DrawerItem(
       {required this.icon,
       required this.title,
-      this.ontap,
-      required this.color});
+      required this.onTap,
+      required this.color,
+      super.key});
+
+  final IconData icon;
+  final String title;
+  final Widget onTap;
+  final Color color;
 
   @override
-  _DrawerItemState createState() => _DrawerItemState();
+  State<DrawerItem> createState() => _DrawerItemState();
 }
 
 class _DrawerItemState extends State<DrawerItem> {
@@ -174,6 +178,11 @@ class _DrawerItemState extends State<DrawerItem> {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: tassistSuccess,
+      onTap: () {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => widget.onTap,
+        ));
+      },
       child: Padding(
         padding: spacer.y.xxs,
         child: Row(
@@ -197,20 +206,15 @@ class _DrawerItemState extends State<DrawerItem> {
           ],
         ),
       ),
-      onTap: () {
-        /*  Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => widget.ontap,
-        )); */
-      },
     );
   }
 }
 
-_launchURL() async {
+/* _launchURL() async {
   const url = '';
-  // if (await canLaunch(url)) {
-  //   await launch(url);
-  // } else {
-  throw 'Could not launch $url';
-  // }
-}
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+} */
