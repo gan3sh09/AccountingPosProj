@@ -1,6 +1,6 @@
 import 'package:accounting_pos_project/theme/colors.dart';
 import 'package:accounting_pos_project/theme/texts.dart';
-import 'package:accounting_pos_project/ui/views/home.dart';
+import 'package:accounting_pos_project/ui/views/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -76,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Future.delayed(const Duration(seconds: 1), () {
                       Navigator.pop(context); // Close the dialog
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const HomeDashboardScreen(),
+                        builder: (context) => const SinginScreen(),
                       ));
                     });
                   },
@@ -261,7 +261,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Future.delayed(const Duration(seconds: 2), () {
                     Navigator.pop(context); // Close the dialog
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const HomeDashboardScreen(),
+                      builder: (context) => const SinginScreen(),
                     ));
                   });
                 },

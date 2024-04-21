@@ -1,14 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:accounting_pos_project/theme/colors.dart';
 import 'package:accounting_pos_project/theme/dimensions.dart';
 import 'package:accounting_pos_project/ui/views/account_payable_screen.dart';
 import 'package:accounting_pos_project/ui/views/account_receivable_screen.dart';
 import 'package:accounting_pos_project/ui/views/home.dart';
 import 'package:accounting_pos_project/ui/views/ledger_screen.dart';
+import 'package:accounting_pos_project/ui/views/signin_screen.dart';
 import 'package:accounting_pos_project/ui/views/stock_screen.dart';
+import 'package:accounting_pos_project/ui/views/voucher_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/services/auth_provider.dart';
 
 Drawer tassistDrawer(BuildContext context) {
+  final authProvider = Provider.of<AuthProvider>(context);
+
   return Drawer(
       child: ListView(
     children: <Widget>[
@@ -93,7 +102,7 @@ Drawer tassistDrawer(BuildContext context) {
       const DrawerItem(
         icon: FontAwesomeIcons.fileInvoice,
         title: 'Vouchers',
-        onTap: HomeDashboardScreen(),
+        onTap: VoucherHome(),
         color: tassistPrimaryBackground,
       ),
       const DrawerItem(
@@ -121,38 +130,87 @@ Drawer tassistDrawer(BuildContext context) {
       const SizedBox(
         height: 20.0,
       ),
-      Padding(
-        padding: spacer.y.xxs,
-        child: InkWell(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: spacer.x.xs,
-                child: const Icon(
-                  Icons.lock_open,
-                  color: tassistPrimaryBackground,
-                ),
+      InkWell(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: spacer.x.xs,
+              child: const Icon(
+                Icons.lock_open,
+                color: tassistPrimaryBackground,
               ),
-              Text(
-                'Sign Out',
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(fontSize: 16),
-              ),
-            ],
-          ),
-          onTap: () async {
-            /* await _auth.signOut().then((_) {
-              // Navigator.popUntil(context, );
-              Navigator.of(context).pushAndRemoveUntil(
-                  new MaterialPageRoute(builder: (context) => new MyApp()),
-                  ModalRoute.withName('/'));
-            }); */
-          },
+            ),
+            Text(
+              'Sign Out',
+              textAlign: TextAlign.left,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(fontSize: 16),
+            ),
+          ],
         ),
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Logout'),
+                content: const Text('Are you sure you want to log out?'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(false); // No button pressed
+                    },
+                    child: const Text(
+                      'No',
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(true); // Yes button pressed
+                    },
+                    child: const Text(
+                      'Yes',
+                      style: TextStyle(
+                        color: tassistPrimary,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ).then((value) async {
+            if (value != null && value) {
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (BuildContext context) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: tassistPrimary,
+                    ),
+                  );
+                },
+              );
+
+              // User confirmed logout, perform logout action
+              await authProvider.logout();
+
+              Navigator.pop(context);
+
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const SinginScreen(),
+                ),
+              );
+            }
+          });
+        },
       ),
     ],
   ));
